@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/React-Java_Employee_Crud.iml" filepath="$PROJECT_DIR$/.idea/React-Java_Employee_Crud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crudEmployee/crudEmployee.iml" filepath="$PROJECT_DIR$/crudEmployee/crudEmployee.iml" />
     </modules>
   </component>
 </project>
