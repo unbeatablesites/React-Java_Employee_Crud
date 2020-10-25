@@ -38,4 +38,20 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
+    // Update employee by id
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployeeById(@PathVariable Long id , @RequestBody Employee employeeDetails){
+
+        Employee employee = employeeRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Employee not found with id : " + id));
+
+        employee.setFirstName(employeeDetails.getFirstName());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setEmailId(employeeDetails.getEmailId());
+
+        Employee updatedEmployee = employeeRepo.save(employee);
+
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+
 }
