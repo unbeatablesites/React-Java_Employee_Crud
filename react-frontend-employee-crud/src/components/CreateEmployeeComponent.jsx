@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EmployeeService from "../services/EmployeeService";
 
 class CreateEmployeeComponent extends Component {
   constructor(props) {
@@ -6,34 +7,44 @@ class CreateEmployeeComponent extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      emailAddress: "",
+      emailId: "",
     };
     this.firstName = this.changeFirstNameHandler.bind(this);
     this.lastName = this.changeLastNameHandler.bind(this);
-    this.emailAddress = this.changeEmailAddressHandler.bind(this);
+    this.emailId = this.changeEmailAddressHandler.bind(this);
     this.saveEmployee = this.saveEmployee.bind(this);
     this.cancel = this.cancel.bind(this);
   }
 
-  cancel(e) {
+  cancel() {
     this.props.history.push("/employees");
   }
 
-  saveEmployee(e) {
+  saveEmployee = (e) => {
     e.preventDefault();
-  }
 
-  changeFirstNameHandler(event) {
+    let employee = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      emailId: this.state.emailId,
+    };
+    console.log("employee => " + JSON.stringify(employee));
+    EmployeeService.createEmployee(employee).then((res) => {
+      this.props.history.push("/employees");
+    });
+  };
+
+  changeFirstNameHandler = (event) => {
     this.setState({ firstName: event.target.value });
-  }
+  };
 
-  changeLastNameHandler(event) {
+  changeLastNameHandler = (event) => {
     this.setState({ lastName: event.target.value });
-  }
+  };
 
-  changeEmailAddressHandler(event) {
-    this.setState({ emailAddress: event.target.value });
-  }
+  changeEmailAddressHandler = (event) => {
+    this.setState({ emailId: event.target.value });
+  };
 
   render() {
     return (
@@ -70,9 +81,9 @@ class CreateEmployeeComponent extends Component {
                     <label>Email Address: </label>
                     <input
                       placeholder="Email Address"
-                      name="emailAdress"
+                      name="emailId"
                       className="form-control"
-                      value={this.state.emailAddress}
+                      value={this.state.emailId}
                       onChange={this.changeEmailAddressHandler}
                     />
                   </div>
@@ -95,7 +106,6 @@ class CreateEmployeeComponent extends Component {
               </div>
             </div>
           </div>
-          <div></div>
         </div>
       </div>
     );

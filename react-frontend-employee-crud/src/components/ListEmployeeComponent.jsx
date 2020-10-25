@@ -39,7 +39,7 @@ class ListEmployeeComponent extends Component {
                 <th>Actions</th>
               </tr>
             </thead>
-
+            {/* has to match what it's called in the Java model for display*/}
             <tbody>
               {this.state.employees.map((employee) => (
                 <tr key={employee.id}>
