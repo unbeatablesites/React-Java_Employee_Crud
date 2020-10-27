@@ -14,14 +14,14 @@ function App() {
         <HeaderComponent />
         <div className="Container">
           <Switch>
-            <Route
+            {/* <Route
               path="/updateEmployee/:id"
               component={UpdateEmployeeComponent}
-            ></Route>
+            ></Route> */}
             <Route path="/" exact component={ListEmployeeComponent}></Route>
             <Route path="/employees" component={ListEmployeeComponent}></Route>
             <Route
-              path="/addEmployee"
+              path="/addEmployee/:id"
               component={CreateEmployeeComponent}
             ></Route>
           </Switch>

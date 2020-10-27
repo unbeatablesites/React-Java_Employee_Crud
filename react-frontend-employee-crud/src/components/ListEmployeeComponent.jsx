@@ -13,11 +13,11 @@ class ListEmployeeComponent extends Component {
   }
 
   editEmployee(id) {
-    this.props.history.push(`/updateEmployee/${id}`);
+    this.props.history.push(`/addEmployee/${id}`);
   }
 
   addEmployee() {
-    this.props.history.push("/addEmployee");
+    this.props.history.push("/addEmployee/_add");
   }
 
   componentDidMount() {
