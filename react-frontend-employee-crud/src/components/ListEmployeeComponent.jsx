@@ -10,6 +10,17 @@ class ListEmployeeComponent extends Component {
     };
     this.addEmployee = this.addEmployee.bind(this);
     this.editEmployee = this.editEmployee.bind(this);
+    this.deleteEmployee = this.deleteEmployee.bind(this);
+  }
+
+  deleteEmployee(id) {
+    EmployeeService.deleteEmployee(id).then((res) => {
+      this.setState({
+        employees: this.state.employees.filter(
+          (employee) => employee.id !== id
+        ),
+      });
+    });
   }
 
   editEmployee(id) {
@@ -57,6 +68,14 @@ class ListEmployeeComponent extends Component {
                       className="btn btn-info"
                     >
                       Update{" "}
+                    </button>
+
+                    <button
+                      style={{ marginLeft: "10px" }}
+                      onClick={() => this.deleteEmployee(employee.id)}
+                      className="btn btn-danger"
+                    >
+                      Delete{" "}
                     </button>
                   </td>
                 </tr>
