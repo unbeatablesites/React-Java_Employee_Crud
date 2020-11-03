@@ -4,6 +4,11 @@ const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/employees";
 
 class EmployeeService {
   getEmployees() {
+    var schedule = require('node-schedule');
+
+      schedule.scheduleJob('* * * * * *', function(fireDate){
+        console.log('This job was supposed to run at ' + fireDate + ', but actually ran at ' + new Date());
+      });
     return axios.get(EMPLOYEE_API_BASE_URL);
   }
 
